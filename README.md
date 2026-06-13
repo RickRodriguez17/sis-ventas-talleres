@@ -35,7 +35,7 @@ Sistema administrativo para un negocio de comida rápida de autoservicio, desarr
    export APP_URL=http://localhost:8000
    ```
 
-3. Iniciar servidor local:
+3. Iniciar servidor local recomendado:
 
    ```bash
    php -S localhost:8000 -t public
@@ -46,6 +46,14 @@ Sistema administrativo para un negocio de comida rápida de autoservicio, desarr
    ```text
    http://localhost:8000
    ```
+
+También puedes abrir el proyecto desde Apache apuntando a la carpeta raíz, por ejemplo:
+
+```text
+http://localhost/sis-ventas-talleres/
+```
+
+El archivo `index.php` de la raíz carga automáticamente la aplicación ubicada en `public/`.
 
 ## Usuarios de prueba
 

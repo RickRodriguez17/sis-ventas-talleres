@@ -12,7 +12,7 @@ function e(?string $value): string
 
 function url(string $route = ''): string
 {
-    $baseUrl = (string) Config::get('app.base_url', '');
+    $baseUrl = app_base_url();
     $route = trim($route, '/');
 
     if ($route === '') {
@@ -24,9 +24,46 @@ function url(string $route = ''): string
 
 function asset(string $path): string
 {
-    $baseUrl = (string) Config::get('app.base_url', '');
+    $assetBase = app_asset_base_url();
 
-    return $baseUrl . '/assets/' . ltrim($path, '/');
+    return $assetBase . '/' . ltrim($path, '/');
+}
+
+function app_base_url(): string
+{
+    $configuredUrl = (string) Config::get('app.base_url', '');
+
+    if ($configuredUrl !== '') {
+        return rtrim($configuredUrl, '/');
+    }
+
+    $scriptName = str_replace('\\', '/', (string) ($_SERVER['SCRIPT_NAME'] ?? ''));
+    $basePath = rtrim(str_replace('\\', '/', dirname($scriptName)), '/');
+
+    return $basePath === '.' ? '' : $basePath;
+}
+
+function app_asset_base_url(): string
+{
+    $configuredAssetUrl = (string) Config::get('app.asset_url', '');
+
+    if ($configuredAssetUrl !== '') {
+        return rtrim($configuredAssetUrl, '/');
+    }
+
+    $scriptName = str_replace('\\', '/', (string) ($_SERVER['SCRIPT_NAME'] ?? ''));
+    $scriptFile = str_replace('\\', '/', (string) ($_SERVER['SCRIPT_FILENAME'] ?? ''));
+    $basePath = rtrim(str_replace('\\', '/', dirname($scriptName)), '/');
+
+    if ($basePath === '.') {
+        $basePath = '';
+    }
+
+    if (basename(dirname($scriptFile)) === 'public') {
+        return $basePath . '/assets';
+    }
+
+    return $basePath . '/public/assets';
 }
 
 function csrf_field(): string
