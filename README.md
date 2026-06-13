@@ -2,14 +2,21 @@
 
 Sistema administrativo para un negocio de comida rápida de autoservicio, desarrollado con PHP puro, MySQL, Bootstrap 5, JavaScript y arquitectura MVC.
 
-## Módulo 1 incluido
+## Funcionalidades incluidas
 
 - Estructura MVC escalable.
 - Base de datos `db_ventas` con tablas normalizadas para ventas, producción, caja, pedidos, usuarios, configuración, auditoría y combos.
 - Inicio de sesión con contraseñas cifradas.
 - Control de sesiones y acceso por rol (`administrador`, `cajero`).
 - Layout responsive con sidebar, navbar, tarjetas y gráfico.
-- Dashboard inicial con métricas por rol.
+- Dashboard con métricas por rol.
+- CRUD de categorías y productos con imágenes, estados y combos promocionales.
+- Producción diaria, historial, alertas de stock bajo y agotados automáticos.
+- POS con búsqueda, carrito, cantidades, descuentos, cambio, métodos de pago y ticket.
+- Pedidos con estados y pantalla pública de pedidos listos autoactualizable.
+- Caja con apertura, cierre, arqueo, ingresos, egresos y total de turno.
+- Usuarios, configuración del negocio y datos del ticket.
+- Reportes por fecha con ventas, productos vendidos, producción, pagos, caja y exportación CSV/Excel/PDF imprimible.
 
 ## Requisitos
 
@@ -62,12 +69,7 @@ El archivo `index.php` de la raíz carga automáticamente la aplicación ubicada
 | Administrador | admin@demo.com | admin123 |
 | Cajero | cajero@demo.com | cajero123 |
 
-## Próximos módulos sugeridos
+## Roles
 
-1. Productos y categorías.
-2. Producción diaria e historial.
-3. POS / ventas y tickets.
-4. Pedidos y pantalla de pedidos listos.
-5. Caja.
-6. Reportes y exportaciones.
-7. Configuración avanzada.
+- `Administrador`: acceso completo al sistema.
+- `Cajero`: ventas, productos disponibles, producción, pedidos, caja y ventas del turno.
