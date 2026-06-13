@@ -33,4 +33,39 @@ abstract class Controller
         header('Location: ' . url($route));
         exit;
     }
+
+    protected function saveUpload(string $field, string $directory, ?string $currentPath = null): ?string
+    {
+        if (!isset($_FILES[$field]) || ($_FILES[$field]['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
+            return $currentPath;
+        }
+
+        if (($_FILES[$field]['error'] ?? UPLOAD_ERR_OK) !== UPLOAD_ERR_OK) {
+            return $currentPath;
+        }
+
+        $tmpName = (string) $_FILES[$field]['tmp_name'];
+        $originalName = (string) $_FILES[$field]['name'];
+        $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+        $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+        if (!in_array($extension, $allowed, true)) {
+            return $currentPath;
+        }
+
+        $targetDirectory = ROOT_PATH . '/public/uploads/' . trim($directory, '/');
+
+        if (!is_dir($targetDirectory)) {
+            mkdir($targetDirectory, 0775, true);
+        }
+
+        $fileName = bin2hex(random_bytes(12)) . '.' . $extension;
+        $target = $targetDirectory . '/' . $fileName;
+
+        if (!move_uploaded_file($tmpName, $target)) {
+            return $currentPath;
+        }
+
+        return 'uploads/' . trim($directory, '/') . '/' . $fileName;
+    }
 }

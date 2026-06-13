@@ -7,14 +7,16 @@ $user = Auth::user();
 $role = Auth::role();
 $menu = [
     ['icon' => 'bi-speedometer2', 'label' => 'Dashboard', 'route' => 'dashboard', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
-    ['icon' => 'bi-box-seam', 'label' => 'Productos', 'route' => 'productos', 'enabled' => false, 'roles' => ['administrador', 'cajero']],
-    ['icon' => 'bi-tags', 'label' => 'Categorías', 'route' => 'categorias', 'enabled' => false, 'roles' => ['administrador']],
-    ['icon' => 'bi-basket2', 'label' => 'Producción', 'route' => 'produccion', 'enabled' => false, 'roles' => ['administrador', 'cajero']],
-    ['icon' => 'bi-cart-check', 'label' => 'Caja / POS', 'route' => 'ventas', 'enabled' => false, 'roles' => ['administrador', 'cajero']],
-    ['icon' => 'bi-receipt', 'label' => 'Pedidos', 'route' => 'pedidos', 'enabled' => false, 'roles' => ['administrador', 'cajero']],
-    ['icon' => 'bi-people', 'label' => 'Usuarios', 'route' => 'usuarios', 'enabled' => false, 'roles' => ['administrador']],
-    ['icon' => 'bi-bar-chart', 'label' => 'Reportes', 'route' => 'reportes', 'enabled' => false, 'roles' => ['administrador']],
-    ['icon' => 'bi-gear', 'label' => 'Configuración', 'route' => 'configuracion', 'enabled' => false, 'roles' => ['administrador']],
+    ['icon' => 'bi-box-seam', 'label' => 'Productos', 'route' => 'productos', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
+    ['icon' => 'bi-tags', 'label' => 'Categorías', 'route' => 'categorias', 'enabled' => true, 'roles' => ['administrador']],
+    ['icon' => 'bi-basket2', 'label' => 'Producción', 'route' => 'produccion', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
+    ['icon' => 'bi-cart-check', 'label' => 'POS / Ventas', 'route' => 'ventas', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
+    ['icon' => 'bi-receipt', 'label' => 'Pedidos', 'route' => 'pedidos', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
+    ['icon' => 'bi-display', 'label' => 'Pantalla pedidos', 'route' => 'pantalla-pedidos', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
+    ['icon' => 'bi-cash-coin', 'label' => 'Caja', 'route' => 'caja', 'enabled' => true, 'roles' => ['administrador', 'cajero']],
+    ['icon' => 'bi-people', 'label' => 'Usuarios', 'route' => 'usuarios', 'enabled' => true, 'roles' => ['administrador']],
+    ['icon' => 'bi-bar-chart', 'label' => 'Reportes', 'route' => 'reportes', 'enabled' => true, 'roles' => ['administrador']],
+    ['icon' => 'bi-gear', 'label' => 'Configuración', 'route' => 'configuracion', 'enabled' => true, 'roles' => ['administrador']],
 ];
 $success = Flash::get('success');
 $error = Flash::get('error');
@@ -47,7 +49,7 @@ $error = Flash::get('error');
                     continue;
                 } ?>
                 <?php if ($item['enabled']): ?>
-                    <a class="nav-link active" href="<?= e(url($item['route'])) ?>">
+                    <a class="nav-link <?= ($_GET['route'] ?? 'dashboard') === $item['route'] ? 'active' : '' ?>" href="<?= e(url($item['route'])) ?>">
                         <i class="bi <?= e($item['icon']) ?> me-2"></i><?= e($item['label']) ?>
                     </a>
                 <?php else: ?>

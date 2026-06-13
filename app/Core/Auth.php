@@ -73,6 +73,17 @@ final class Auth
         }
     }
 
+    public static function requireRoles(array $roles): void
+    {
+        self::requireAuth();
+
+        if (!in_array((string) self::role(), $roles, true)) {
+            http_response_code(403);
+            (new \App\Controllers\ErrorController())->forbidden();
+            exit;
+        }
+    }
+
     public static function requireGuest(): void
     {
         if (self::check()) {
