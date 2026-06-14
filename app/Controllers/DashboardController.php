@@ -21,7 +21,6 @@ final class DashboardController extends Controller
         $this->render('dashboard/index', [
             'title' => 'Dashboard',
             'stats' => $stats,
-            'dailySales' => $model->dailySales(),
             'settings' => $settings,
         ]);
     }

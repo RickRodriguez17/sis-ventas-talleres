@@ -34,30 +34,6 @@ final class DashboardStats extends BaseModel
         ];
     }
 
-    public function dailySales(): array
-    {
-        $statement = $this->db->query(
-            "SELECT DATE(created_at) AS sale_date, COALESCE(SUM(total), 0) AS total
-             FROM sales
-             WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) AND status <> 'anulada'
-             GROUP BY DATE(created_at)
-             ORDER BY sale_date"
-        );
-        $rows = $statement->fetchAll();
-        $data = [];
-
-        for ($i = 6; $i >= 0; $i--) {
-            $date = date('Y-m-d', strtotime("-{$i} days"));
-            $data[$date] = 0.0;
-        }
-
-        foreach ($rows as $row) {
-            $data[(string) $row['sale_date']] = (float) $row['total'];
-        }
-
-        return $data;
-    }
-
     public function settings(): array
     {
         $statement = $this->db->query('SELECT business_name, currency, logo FROM settings ORDER BY id LIMIT 1');
