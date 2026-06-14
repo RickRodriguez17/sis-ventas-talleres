@@ -16,7 +16,7 @@ Sistema administrativo para un negocio de comida rápida de autoservicio, desarr
 - Pedidos con estados y pantalla pública de pedidos listos autoactualizable.
 - Caja con apertura, cierre, arqueo, ingresos, egresos y total de turno.
 - Usuarios, configuración del negocio y datos del ticket.
-- Reportes por fecha con ventas, productos vendidos, producción, pagos, caja y exportación CSV/Excel/PDF imprimible.
+- Reportes por fecha con ventas, productos vendidos, producción, pagos, caja y exportación PDF imprimible.
 
 ## Requisitos
 

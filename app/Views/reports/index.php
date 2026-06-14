@@ -3,7 +3,7 @@
         <input type="hidden" name="route" value="reportes">
         <div class="col-md-3"><label class="form-label">Desde</label><input class="form-control" type="date" name="from" value="<?= e($from) ?>"></div>
         <div class="col-md-3"><label class="form-label">Hasta</label><input class="form-control" type="date" name="to" value="<?= e($to) ?>"></div>
-        <div class="col-md-6 d-flex gap-2"><button class="btn btn-dark">Filtrar</button><a class="btn btn-outline-success" href="<?= e(url('reportes/exportar&format=xls&from=' . $from . '&to=' . $to)) ?>">Excel</a><a class="btn btn-outline-secondary" href="<?= e(url('reportes/exportar&format=csv&from=' . $from . '&to=' . $to)) ?>">CSV</a><a class="btn btn-outline-danger" target="_blank" href="<?= e(url('reportes/exportar&format=pdf&from=' . $from . '&to=' . $to)) ?>">PDF imprimible</a></div>
+        <div class="col-md-6 d-flex gap-2"><button class="btn btn-dark">Filtrar</button><a class="btn btn-outline-danger" target="_blank" href="<?= e(url('reportes/exportar&from=' . $from . '&to=' . $to)) ?>">Exportar PDF</a></div>
     </div>
 </form>
 <div class="row g-3 mb-4">

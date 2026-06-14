@@ -1,9 +1,9 @@
 :root {
-    --sidebar-width: 280px;
+    --sidebar-width: 250px;
     --primary: #1f2937;
     --primary-soft: #374151;
     --accent: #f59e0b;
-    --body-bg: #f3f4f6;
+    --body-bg: #f8fafc;
 }
 
 body {
@@ -14,13 +14,13 @@ body {
 
 .auth-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #111827, #374151);
+    background: #1f2937;
 }
 
 .auth-card {
     border: 0;
-    border-radius: 1.25rem;
-    box-shadow: 0 24px 60px rgba(15, 23, 42, .28);
+    border-radius: .5rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .18);
 }
 
 .sidebar {
@@ -37,7 +37,7 @@ body {
 }
 
 .sidebar .nav-link {
-    border-radius: .75rem;
+    border-radius: .35rem;
     color: #d1d5db;
     margin-bottom: .25rem;
     padding: .75rem 1rem;
@@ -60,8 +60,7 @@ body {
 }
 
 .topbar {
-    backdrop-filter: blur(14px);
-    background: rgba(255, 255, 255, .92);
+    background: #fff;
     border-bottom: 1px solid #e5e7eb;
     position: sticky;
     top: 0;
@@ -69,9 +68,9 @@ body {
 }
 
 .stat-card {
-    border: 0;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    border: 1px solid #e5e7eb;
+    border-radius: .5rem;
+    box-shadow: none;
 }
 
 .stat-icon {
@@ -83,11 +82,10 @@ body {
     width: 48px;
 }
 
-.table-card,
-.chart-card {
-    border: 0;
-    border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+.table-card {
+    border: 1px solid #e5e7eb;
+    border-radius: .5rem;
+    box-shadow: none;
 }
 
 .badge-soft {
@@ -97,20 +95,19 @@ body {
 
 .product-card {
     border: 1px solid #e5e7eb;
-    border-radius: 1rem;
+    border-radius: .5rem;
     cursor: pointer;
-    transition: border-color .15s ease, transform .15s ease;
+    transition: border-color .15s ease;
 }
 
 .product-card:hover {
     border-color: var(--accent);
-    transform: translateY(-2px);
 }
 
 .product-thumb {
     align-items: center;
     background: #f9fafb;
-    border-radius: .85rem;
+    border-radius: .5rem;
     display: flex;
     height: 120px;
     justify-content: center;
